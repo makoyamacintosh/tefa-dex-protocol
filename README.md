@@ -62,6 +62,7 @@ TEFA DEX is a multi-chain decentralized exchange protocol designed to unify frag
 ## ⚠️ Disclaimer
 
 This project is under active development. Do not use in production with real funds until audited.
+In development (DO NOT use in production)
 
 ## 📜 License
 
