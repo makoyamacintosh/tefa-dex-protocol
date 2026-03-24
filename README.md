@@ -37,11 +37,17 @@ TEFA DEX is a multi-chain decentralized exchange protocol designed to unify frag
 ## 📂 Project Structure
 
 /contracts      → Smart contracts (core protocol)
+
 /frontend      → Web app
+
 /relayer       → Gasless transaction service
+
 /scripts       → Deployment scripts
+
 /test          → Unit & integration tests
+
 /docs          → Whitepaper & diagrams
+
 /security      → Threat model & audits
 
 ## 🚧 Roadmap
