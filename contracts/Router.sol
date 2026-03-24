@@ -4,10 +4,16 @@ pragma solidity ^0.8.20;
 import "./Pool.sol";
 
 contract Router {
-
     mapping(address => mapping(address => address)) public getPool;
 
-    function createPool(address tokenA, address tokenB) external returns (address pool) {
+    // ----------------------------
+    // CREATE POOL
+    // ----------------------------
+    function createPool(address tokenA, address tokenB)
+        external
+        returns (address pool)
+    {
+        require(tokenA != tokenB, "Same token");
         require(getPool[tokenA][tokenB] == address(0), "Pool exists");
 
         pool = address(new Pool(tokenA, tokenB));
@@ -16,6 +22,9 @@ contract Router {
         getPool[tokenB][tokenA] = pool;
     }
 
+    // ----------------------------
+    // ADD LIQUIDITY
+    // ----------------------------
     function addLiquidity(
         address tokenA,
         address tokenB,
@@ -25,9 +34,13 @@ contract Router {
         address pool = getPool[tokenA][tokenB];
         require(pool != address(0), "Pool not found");
 
+        // IMPORTANT: user must approve Pool (not Router)
         Pool(pool).addLiquidity(amountA, amountB);
     }
 
+    // ----------------------------
+    // SWAP
+    // ----------------------------
     function swap(
         address tokenIn,
         address tokenOut,
